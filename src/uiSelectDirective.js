@@ -41,7 +41,6 @@ uis.directive('uiSelect',
 
         $select.generatedId = uiSelectConfig.generateId();
         $select.baseTitle = attrs.title || 'Select box';
-        $select.focusserTitle = $select.baseTitle + ' focus';
         $select.focusserId = 'focusser-' + $select.generatedId;
 
         $select.closeOnSelect = function() {
