@@ -104,15 +104,16 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
       });
       focusser.bind("keydown", function(e){
 
+        if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
+          e.stopPropagation();
+          return;
+        }
+
         if (e.which === KEY.BACKSPACE && $select.backspaceReset !== false) {
           e.preventDefault();
           e.stopPropagation();
           $select.select(undefined);
           scope.$apply();
-          return;
-        }
-
-        if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
           return;
         }
 
@@ -128,6 +129,7 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
       focusser.bind("keyup input", function(e){
 
         if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC || e.which == KEY.ENTER || e.which === KEY.BACKSPACE) {
+          e.stopPropagation();
           return;
         }
 
