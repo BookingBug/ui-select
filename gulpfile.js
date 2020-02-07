@@ -20,10 +20,10 @@ var config = {
 };
 
 gulp.task('default', ['build','test']);
-gulp.task('build', ['scripts', 'styles']);
+gulp.task('build', ['scripts']); // , 'styles']);
 gulp.task('test', ['build', 'karma']);
 
-gulp.task('watch', ['build','karma-watch'], function() {
+gulp.task('watch', ['build'], function() {
   gulp.watch(['src/**/*.{js,html}'], ['build']);
 });
 
@@ -31,7 +31,7 @@ gulp.task('clean', function(cb) {
   del(['dist', 'temp'], cb);
 });
 
-gulp.task('scripts', ['clean'], function() {
+gulp.task('scripts', [/*'clean'*/], function() {
 
   var buildTemplates = function () {
     return gulp.src('src/**/*.html')
