@@ -760,6 +760,12 @@ uis.controller('uiSelectCtrl',
         'ui-select-choices-row-' + ctrl.generatedId + '-' + activeIndex);
   });
 
+  ctrl.searchInput.on('keyup', function(){
+    const ariaLive = $element.find('.ui-select-choices-aria-live');
+    const selectedElement = angular.element('.ui-select-choices-row.active');
+    ariaLive.html(selectedElement.find('.ui-select-choices-row-inner').children(':visible').text());
+  });
+
   $scope.$watch('$select.open', function(open) {
     if (!open)
       $element.find('input').removeAttr('aria-activedescendant');

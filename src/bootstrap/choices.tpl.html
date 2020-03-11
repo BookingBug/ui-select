@@ -1,13 +1,18 @@
-<ul class="ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu"
-    ng-show="$select.open && $select.items.length > 0">
-  <li class="ui-select-choices-group" id="ui-select-choices-{{ $select.generatedId }}" >
+<ul class="ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu">
+  <div class="sr-only" aria-live="assertive" ng-show=" $select.open && $select.items.length > 0"> Expanded </div>
+  <div class="sr-only" aria-live="assertive" ng-show="!$select.open && $select.items.length < 0"> Collapsed </div>
+  <li class="ui-select-choices-group" id="ui-select-choices-{{ $select.generatedId }}" ng-show="$select.open && $select.items.length > 0">
     <div class="divider" ng-show="$select.isGrouped && $index > 0"></div>
     <div ng-show="$select.isGrouped" class="ui-select-choices-group-label dropdown-header" ng-bind="$group.name"></div>
+    <div 
+      class="sr-only ui-select-choices-aria-live" 
+      aria-live="polite">
+    </div>
     <div 
       ng-attr-id="ui-select-choices-row-{{ $select.generatedId }}-{{$index}}" 
       class="ui-select-choices-row"
       ng-class="{active: $select.isActive(this), disabled: $select.isDisabled(this)}" 
-      role="{{ $select.multiple ? 'checkbox' : 'option' }}"
+      role="option"
       aria-checked="false"
     >
       <span class="ui-select-choices-row-inner"></span>
