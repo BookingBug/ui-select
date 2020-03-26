@@ -761,8 +761,8 @@ uis.controller('uiSelectCtrl',
   });
 
   ctrl.searchInput.on('keyup', function(){
-    const ariaLive = $element.find('.ui-select-choices-aria-live');
-    const selectedElement = angular.element('.ui-select-choices-row.active');
+    var ariaLive = $element.find('.ui-select-choices-aria-live');
+    var selectedElement = angular.element('.ui-select-choices-row.active');
     ariaLive.html(selectedElement.find('.ui-select-choices-row-inner').children(':visible').text());
   });
 
